@@ -1,13 +1,15 @@
 package com.virtualdoctor.virtual_doctor.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.List;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 @Service
 public class AiService {
@@ -68,7 +70,7 @@ public class AiService {
             messages.add(userMsg);
 
             Map<String, Object> requestBody = new HashMap<>();
-            requestBody.put("model", "llama-3.1-8b-instant");
+            requestBody.put("model", "openai/gpt-oss-20b");
             requestBody.put("messages", messages);
 
             String requestJson = objectMapper.writeValueAsString(requestBody);
